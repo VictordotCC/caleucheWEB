@@ -166,6 +166,24 @@
                         e.preventDefault(), m.classList.add("d-none");
                         try {
                             console.log(u(E));
+                            fetch("https://CaleucheAPI.victordotcc.repl.co/new_message", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(u(E))
+                            }).then((response) => {
+                                if (response.ok) {
+                                    return response.json();
+                                } else {
+                                    throw new Error('Something went wrong');
+                                }
+                            }).then((data) => {
+                                console.log(data);
+                            }).catch((error) => {
+                                console.log(error);
+                            });
+
                             //TODO: send data to server
                             /*console.log(u(E)), d ? yield(n = {
                                 token: b,
