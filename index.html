@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
@@ -29,6 +30,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Tours</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pagos">Pagos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
@@ -94,8 +96,8 @@
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-tents fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Servicios Extras</h4>
-                        <p class="text-muted">Agregado a todo lo anterior, te ofrecemos diversos servicios de camping, los que se encontrar&aacute;n montados a tu llegada
+                        <h4 class="my-3">Extras</h4>
+                        <p class="text-muted">Adem&aacute;s de lo anterior, te ofrecemos diversos servicios de camping, los que se encontrar&aacute;n montados a tu llegada
                             para que s&oacute;lo tengas que disfrutar de tu festival.</p>
                     </div>
                 </div>
@@ -142,27 +144,32 @@
                 </div>
             </div>
         </section>
-        <!-- Clients-->
+        <!-- Pagos-->
         <section class="page-section" id="pagos">                  
             <div class="py-5">
                 <div class="container">
                     <div class="text-center">
                         <h2 class="section-heading text-uppercase">Zona de Pagos</h2>
-                        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                        <h3 class="section-subheading text-muted">Aquí puedes realizar tus pagos</h3>
                     </div>
                     <div class="row align-items-center">
-                        <div class="col-md-3 col-sm-6 my-3">
-                            <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
-                        </div>
-                        <div class="col-md-3 col-sm-6 my-3">
-                            <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
-                        </div>
-                        <div class="col-md-3 col-sm-6 my-3">
-                            <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
-                        </div>
-                        <div class="col-md-3 col-sm-6 my-3">
-                            <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
-                        </div>
+                        <div class="col-md-12 col-sm-12 my-3">
+                            <div id="smart-button-container">
+                                <div style="text-align: center">
+                                    <input type="text" name="descriptionInput" id="description" maxlength="127" value="" placeholder="Descripci&oacute;n Pago">
+                                    <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Porfavor indicar Servicio</p>
+                                </div>       
+                                <div style="text-align: center">
+                                    <input name="amountInput" type="number" id="amount" value="" placeholder="Monto en Euros"></div>
+                                  <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Porfavor ingresar el monto</p>
+                                <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+                                  <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+                                <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+                              </div>
+                            <div class="row text-center">
+                                <p class="text-muted">*Si has cometido un error, comunícate con nosotros al correo caleuchemetaltours@gmail.com</p>
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -205,7 +212,7 @@
                             <div class="timeline-body"><p class="text-muted">Poco a poco, al eliminarse las restricciones por pandemia se reactivaron los festivales, pudiendo realizarse Wacken Open Air y Hellfest 2022, permitiendo la reapertura del servicio y reservas de tickets y tours para el año 2023. </p></div>
                         </div>
                     </li>
-                    <li class="timeline-inverted">
+                    <li class="timeline-inverted" style="display: none">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -234,32 +241,33 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Nuestros Metalheads</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Una Mirada a Nuestro Equipo.</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
                             <h4>Víctor Celis</h4>
-                            <p class="text-muted">Lead Designer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <p class="text-muted">Socio Caleuche Metal SpA</p>
+                            <a class="btn btn-dark btn-social mx-2 disabled" href="#!" aria-label="Victor Celis Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/victor.no.w" target ="_blank" aria-label="Victor Celis Instagram Profile"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-dark btn-social mx-2 disabled" href="#!" aria-label="Victor Celis LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
                             <h4>Patricio Ramírez</h4>
-                            <p class="text-muted">Lead Marketer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <p class="text-muted">Socio Caleuche Metal SpA</p>
+                            <a class="btn btn-dark btn-social mx-2 disabled" href="#!" aria-label="Patricio Ramirez Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/pj85rc" target="_blank" aria-label="Patricio Ramirez Instagram Profile"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/patricio-ramirez-carrizo" target="_blank" aria-label="Patricio Ramirez LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Mentalizados en acercar el metal al cono sur y a los metalheads al viejo continente en búsqueda
+                        de una de las mejores experiencias de vida, creamos este proyecto intentando entregar confiabilidad y seguir apoyando a la escena del metal en latinoamérica.</p></div>
                 </div>
             </div>
         </section>
@@ -282,26 +290,26 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                <input class="form-control" id="name" type="text" placeholder="Nombre *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Campo obligatorio.</div>
                             </div>
                             <div class="form-group">
                                 <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                <input class="form-control" id="email" type="email" placeholder="Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">Campo obligatorio.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Correo inv&aacute;lido</div>
                             </div>
                             <div class="form-group mb-md-0">
                                 <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                                <input class="form-control" id="phone" type="tel" placeholder="Tel&eacute;fono *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Campo obligatorio.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
                                 <!-- Message input-->
                                 <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">Campo obligatorio.</div>
                             </div>
                         </div>
                     </div>
@@ -321,9 +329,9 @@
                     <!---->
                     <!-- This is what your users will see when there is-->
                     <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error al enviar!</div></div>
                     <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton">Enviar</button></div>
                 </form>
             </div>
         </section>
@@ -559,11 +567,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="js/sb-forms-latest.js"></script>
+        
     </body>
 </html>
 
